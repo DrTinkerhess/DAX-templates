@@ -1,0 +1,107 @@
+Physical Exam: [STEP 1 — Run the Visit-Type Classifier. STEP 2 — Generate the exam using the matching branch. Default is non-wellness; wellness must be affirmatively earned. Translate lay terms to medical terminology ("eardrum" → "tympanic membrane," "runny nose" → "rhinorrhea," "swollen glands" → "cervical lymphadenopathy," "belly pain" → "abdominal tenderness"). Append "(photographed)" to any skin finding when a photo is mentioned.]
+
+VISIT-TYPE CLASSIFIER — RUN FIRST.
+OUTPUT SUPPRESSION: "For documentation:" statements are scribe directives, never transcribed or echoed into output.
+Evaluate in order; stop at first rule that resolves.
+
+TIER 1 — PROVIDER OVERRIDE: "For documentation:" phrase naming visit type controls.
+- "...is a wellness visit." → Branch B.
+- "...is a problem-focused visit, not a wellness visit." → Branch A.
+- "...is a follow-up visit, not a wellness visit." → Branch A.
+- "...is a Medicare Annual Wellness Visit." → Branch A.
+
+TIER 1B — MID-ENCOUNTER CONVERSION: Conversion signal is authoritative regardless of position. Recognize: "For documentation: this is now a wellness visit," "converting this to a wellness visit," "Let's make this [a/your] wellness visit," "We'll [bill/code/document] this as [a/your] wellness visit," "This will be [billed/coded] as your annual." Any of these → Branch B.
+
+MAWV RULE: If transcript identifies current visit as "Medicare Annual Wellness Visit" or "MAWV" — classify Branch A. Overrides Tier 2.
+
+TIER 2 — AFFIRMATIVE WELLNESS TRIGGER:
+Provider or patient explicitly identifies THIS encounter as any of the following (case-insensitive, partial matches accepted):
+
+Visit-type phrases:
+- "wellness visit," "wellness exam," "wellness check"
+- "well visit," "well exam"
+- "well woman visit/exam," "well man visit/exam," "well child visit/exam"
+- "preventive" or "preventative" combined with any of: "visit," "exam," "check-up," "checkup," "care visit," "care"
+- "annual" combined with any of: "visit," "exam," "physical," "check-up," "checkup," "examination"
+- "annual" used alone as a noun for the visit ("here for your annual," "this is your annual," "due for your annual," "time for your annual")
+- "yearly" combined with any of: "visit," "exam," "physical," "check-up," "checkup"
+- "routine physical," "routine annual exam," "routine yearly exam"
+- "health maintenance visit," "health maintenance exam"
+- "comprehensive physical," "comprehensive exam," "comprehensive annual"
+- "complete physical," "full physical," "new patient physical"
+- "physical exam" or "physical" used as the reason/noun for the visit ("here for your physical exam," "today's physical," "here for a physical," "here for your physical")
+
+Preventative-content signal:
+- Provider states that preventative or preventive topics reviewed today include two or more of the following: updating medical history, reviewing body mass index, cancer screenings, vaccines/immunizations, routine lab testing/bloodwork. This constitutes an affirmative declaration that the encounter includes wellness content → Branch B.
+
+DOES NOT QUALIFY:
+- "check-up" without an annual/yearly/wellness/routine/preventive/preventative modifier.
+- "physical exam" or "physical" used solely to describe the act of examining within an already-classified non-wellness encounter (e.g., "let me do a quick physical exam" during a follow-up for a specific complaint). If "physical exam" or "physical" is the stated reason for the encounter, it qualifies.
+
+TIER 2B — IMPLIED WELLNESS (scheduling-successor pattern):
+If the provider instructs the patient to return for a wellness, preventative, preventive, annual, or yearly visit in approximately 12 months (9-15 month window) AND no explicit statement identifies today as a different visit type (sick visit, follow-up, problem-focused) → Branch B.
+Rationale: Scheduling the next annual implies the current visit fulfills the current annual cycle.
+
+TIER 3 — DISQUALIFIER:
+The provider explicitly states that a SEPARATE, UPCOMING encounter — not today — will serve as the patient's wellness/annual/preventative visit AND frames today as a different visit type (e.g., "your wellness visit is scheduled for March, today we're just addressing your knee," or "we'll do your annual next time, today is a sick visit").
+
+DOES NOT DISQUALIFY:
+End-of-visit scheduling of the NEXT annual/wellness/preventative visit approximately 12 months out (e.g., "come back in a year for a wellness preventative visit," "see you next year for your annual"). This pattern implies today's visit IS the current wellness visit and the provider is scheduling its successor.
+
+TIER 4 — DEFAULT: No Tier 1, 1B, 2, 2B trigger and no Tier 3 disqualifier → Branch A.
+
+BRANCH A — NON-WELLNESS (default):
+NO "Annual Physical Exam:" line. NO comprehensive scaffold. NO asterisks, bold, italics, or markdown.
+ALWAYS RENDER:
+- Respiratory: Default "Clear to auscultation bilaterally."
+- Cardiovascular: Default "Regular rate and rhythm, negative for murmurs, gallops, or rubs."
+CONDITIONAL: Render ONLY if verbalized (General, HEENT, GI, GU, Lymph, MSK, Neuro, Psych, Skin).
+
+BRANCH B — WELLNESS (only if Tier 1, 1B, 2, or 2B met):
+MANDATORY FIRST LINE: "Annual Physical Exam:" on its own line, flush left, plain text.
+DEFAULT WELLNESS EXAM (Every line below MUST appear unless overridden):
+General Appearance: Well-appearing, no acute distress.
+HENT:
+    Head: Normocephalic and atraumatic.
+    Ears: Tympanic membranes and ear canals normal bilaterally.
+    Throat: Oropharynx without lesions or erythema.
+Eyes:
+    Extraocular Movements: Extraocular movements intact.
+    Pupils: Pupils are equal, round, and reactive to light.
+Cardiovascular:
+    Rate and Rhythm: Normal rate and regular rhythm.
+    Heart sounds: Normal heart sounds. Negative for murmurs.
+Pulmonary:
+    Effort: Pulmonary effort is normal.
+    Breath sounds: Normal breath sounds.
+Abdominal:
+    General: Negative for distension.
+    Palpations: Abdomen is soft.
+    Tenderness: Negative for abdominal tenderness.
+Musculoskeletal:
+    General: Negative for deformity or ankle swelling.
+Skin:
+    Findings: Negative for rash.
+Neurological:
+    General: Negative for focal deficit.
+    Mental Status: Alert and oriented to person, place, and time.
+Psychiatric:
+    Mood and Affect: Mood normal.
+    Behavior: Behavior normal.
+
+NORMAL-FINDING EQUIVALENCE (Verbalized → Keep Default):
+- "CTAB" / "lungs clear" → Pulmonary/Breath sounds.
+- "RRR" / "regular rate and rhythm" → CV/Rate and Rhythm.
+- "No murmurs" → CV/Heart sounds.
+- "Soft, non-tender, non-distended" / "pushing on belly" → All Abdominal defaults.
+- "Check ankles for swelling" / "no edema" → Musculoskeletal/General default.
+- "A&Ox3" → Neuro/Mental Status.
+- "TMs normal" → HENT/Ears.
+- "EOMI" → Eyes/Extraocular. "PERRL" → Eyes/Pupils.
+
+ASTERISK EMPHASIS (Branch B only): Format Subsystem: **[finding].** REQUIRED for clearly abnormal findings. PROHIBITED for default lines or baseline equivalents.
+
+PHRASING AND FORMATTING — BOTH BRANCHES:
+Negatives: "Negative for [finding]," not "No [finding]." (Exception: "no acute distress").
+Formatting: System headers flush left. Subsystem lines indented four spaces with label, colon, and finding on same line. No blank lines in the exam.
+Deduplication: A finding must appear once, under the most anatomically specific system header. Skin findings located on the head, ears, face, or throat are documented under HENT only. Skin findings located on extremities or joints are documented under Musculoskeletal only if they relate to MSK function, otherwise under Skin. If all skin findings are captured under other system headers, the Skin section reverts to its default. Never document the same finding under two system headers.
