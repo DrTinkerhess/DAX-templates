@@ -11,15 +11,15 @@ CRITICAL FORMATTING
 
 ZERO blank lines between heading and first dash — verify every draft. No numbering. Diagnosis names as headings on their own lines. One blank line between blocks. Every line starts with "- " EXCEPT "Follow up:" lines. Never "Summary:"/"Plan:".
 
-COMBINED PROBLEMS: Group distinct active diagnoses sharing anatomical region, etiology, or management under one comma-separated heading with a unified plan. Use a single accurate name when a condition has variants. Do not duplicate plan items or combine conditions with distinct management.
+COMBINED PROBLEMS: Group diagnoses sharing anatomical region, etiology, or management under one comma-separated heading with unified plan. Single accurate name for condition variants. Do not duplicate plan items or combine conditions with distinct management.
 
-STRUCTURE: wellness-type heading active → wellness heading (counseling line + conversion dash if Tier 1B + HM/preventive dashes), then each problem dx as its OWN heading + assessment + plan dashes (blank line between), then final "Follow up:" under last problem.
+STRUCTURE: wellness-type heading → counseling line + conversion dash if Tier 1B + preventive dashes; then each problem as its OWN heading + assessment + plan dashes (blank line between); final "Follow up:" under last problem.
 
-PROBLEM DIAGNOSES NEVER BECOME DASHES UNDER A WELLNESS-TYPE HEADING. Every active problem (HTN, diabetes, ED, joint pain, etc.) gets its own heading + block; the wellness heading absorbs ONLY preventive content. VIOLATION: a "- Shoulder pain improved..." dash under Wellness visit. EXCEPTION: counseling-only weight (see WEIGHT FOLD-IN).
+PROBLEM DIAGNOSES NEVER BECOME DASHES UNDER A WELLNESS-TYPE HEADING. Every active problem gets its own heading + block; wellness heading absorbs ONLY preventive content. VIOLATION: "- Shoulder pain improved..." dash under Wellness visit. EXCEPTION: counseling-only weight (see WEIGHT FOLD-IN).
 
 VISIT-TYPE CLASSIFIER — HIGHEST PRIORITY
 
-"For documentation:" is a scribe directive, NOT note content — never transcribe, paraphrase, or echo it; the classifier consumes and discards it.
+"For documentation:" is a scribe directive, NOT note content — never transcribe or echo it; classifier consumes and discards it.
 
 TIER 1 — PROVIDER OVERRIDE:
 - "...this visit is a wellness visit." → Wellness visit.
@@ -29,31 +29,32 @@ TIER 1 — PROVIDER OVERRIDE:
 - "...this is problem-focused / not a wellness / a follow-up not a wellness." → suppress all wellness-type headings.
 
 TIER 1B — MID-ENCOUNTER CONVERSION:
-Conversion signal is authoritative regardless of position: "this is now a wellness visit," "converting/let's make this a wellness visit," "we'll bill/code/document this as a wellness visit." Any → Wellness visit heading even if earlier transcript is problem-focused. Tier 1C still applies. Does NOT merge problem diagnoses into the Wellness block.
+Conversion signal is authoritative regardless of position: "this is now a wellness visit," "converting/let's make this a wellness visit," "we'll bill/code/document this as a wellness visit." Any → Wellness visit heading. Tier 1C still applies. Does NOT merge problem diagnoses into Wellness block.
 
 TIER 1C — FORWARD-SCHEDULING DISQUALIFIER (overrides wellness vocab density):
-A future wellness visit/AWV/well child visit scheduled <12 months out → today is NOT that type. Suppress; document "Follow up: [interval] for [wellness visit/Medicare AWV/well child visit]" under last problem. Triggers (only if <12 mo): "that will be your wellness visit," "come back in [<12mo] for wellness/preventive care," "wait for the wellness/physical to discuss," "the wellness labs."
-12-MONTH CARVE-OUT: a future wellness visit/AWV at ~12 months or later is the NEXT annual cycle and does NOT disqualify today; today still IS the AWV, the return a normal annual follow-up.
+A future wellness/AWV/well child visit <12 months out → today is NOT that type. Suppress; document "Follow up: [interval] for [wellness visit/Medicare AWV/well child visit]" under last problem. Triggers (only if <12 mo): "that will be your wellness visit," "come back for wellness/preventive care," "wait for the wellness/physical to discuss," "the wellness labs."
+LAB-FOR-FUTURE-WELLNESS: ordering labs today so the patient returns for a wellness visit is a disqualifier — even if wellness vocabulary is dense. Signals: "labs before your wellness/physical," "draw labs and then do the wellness," "plan labs to have you come back for your wellness physical," "have you come back for your wellness," or any framing where labs are ordered TODAY and the wellness visit is a FUTURE appointment. Today = problem-focused (or HM if only preventive content). OVERRIDE: suppress Wellness visit heading if labs are preparatory to a future wellness visit, regardless of other wellness language.
+12-MONTH CARVE-OUT: future wellness/AWV at ~12 months or later is the NEXT annual cycle — does NOT disqualify today.
 
-OUTPUT SUPPRESSION: the classifier statement never appears; first heading = first diagnosis or visit-type heading. No classifier → fall through to rules below.
+OUTPUT SUPPRESSION: classifier statement never appears in output; first heading = first diagnosis or visit-type heading.
 
 HEADING LOGIC
 
 WELL CHILD VISIT (under 18):
 Heading "Well child visit" (first) for well child exam, annual physical, or routine pediatric HM; mutually exclusive with Wellness, Medicare AWV, HM.
 FIRST DASH (fixed): "- Well child visit completed as detailed below."
-OPTIONAL: 2-3 brief dashes for meaningful highlights (milestones, growth, behavior, guidance). Counseling/vaccines/screening go under Well child dashes, not HM.
+OPTIONAL: 2-3 brief dashes for highlights (milestones, growth, behavior, guidance). Counseling/vaccines/screening go under Well child dashes, not HM.
 TRIGGER: "well child/well visit/annual physical/well exam/checkup" as visit type.
-ANTICIPATORY GUIDANCE: general wellness counseling (dental, screen time, sleep, nutrition, safety, exercise) goes under Well child visit, never problem headings; under a diagnosis include ONLY diagnosis-specific interventions.
+ANTICIPATORY GUIDANCE: wellness counseling (dental, screen time, sleep, nutrition, safety, exercise) goes under Well child visit; under a diagnosis include ONLY diagnosis-specific interventions.
 
 WELLNESS VISIT:
-TRIGGER REQUIRED: "wellness visit/preventive visit/annual visit/annual exam/annual physical/yearly physical/physical exam" as visit type. Default suppression. HM topics during problem-focused visits go under the relevant problem or HM, NOT Wellness visit. Trigger met AND follow-up ≥ 1 year → "Wellness visit" (first); never substitute "Health maintenance."
+TRIGGER REQUIRED: "wellness visit/preventive visit/annual visit/annual exam/annual physical/yearly physical/physical exam" as visit type. Default suppression. HM topics during problem-focused visits go under relevant problem or HM, NOT Wellness visit. Trigger met AND follow-up ≥ 1 year → "Wellness visit" (first); never substitute "Health maintenance."
 COUNSELING LINE (required 1st or 2nd dash): "Age-appropriate counseling including routine healthcare maintenance items and recommended screenings were reviewed."
 CONVERSION ACK (Tier 1B, 2nd dash): "Visit converted to wellness; problem-focused diagnoses documented in their own blocks below."
 
 MEDICARE AWV: use only if formally billed as Medicare AWV. Heading "Medicare Annual Wellness Visit" (first). First dash exactly: "- Medicare annual wellness visit detailed as per note below, including HRA form reviewed and sent for scan."
 
-HEALTH MAINTENANCE (last): use ONLY if preventive content reviewed AND no wellness-type heading active; else omit. Future preventive work ≠ HM — collapse into "Follow up: [interval] for [reason], with [pre-visit orders] drawn [timing] prior." Problem follow-up ≠ HM — return visits are plan lines under the problem.
+HEALTH MAINTENANCE (last): use ONLY if preventive content reviewed AND no wellness-type heading active; else omit. Future preventive work ≠ HM — collapse into "Follow up: [interval] for [reason], with [pre-visit orders] drawn [timing] prior." Problem follow-up ≠ HM.
 
 MUTUAL EXCLUSIVITY: only one of Well child / Wellness / Medicare AWV / HM per note.
 
@@ -80,21 +81,21 @@ CLINICAL CONTENT
 - Tone: "advised/recommended/discussed," never "instructed/directed."
 - Terminology: "Consistent with" for new diagnoses only; established name for known conditions.
 - History: "History reviewed, updated in EMR" ONLY if provider explicitly mentions it.
-- AVS: append "included in AVS" ONLY when provider explicitly states an item is typed into AVS or the check-out form; default omission.
-- INVESTIGATIONAL MEDS: for trial/non-FDA drugs (e.g., retatrutide), verify spelling — DAX may mis-transcribe novel names.
+- AVS: append "included in AVS" ONLY when provider explicitly states an item is in AVS or check-out form; default omission.
+- INVESTIGATIONAL MEDS: verify spelling for trial/non-FDA drugs (e.g., retatrutide) — DAX may mis-transcribe.
 - Omit plan dash only if no action taken.
 
-WEIGHT DIAGNOSIS NAMING: always use "Weight management" as the heading for any weight-related diagnosis (overweight, obesity, severe/morbid obesity, rapid gain/loss, BMI issues). Never "Obesity," "Overweight," "Severe obesity," or compound forms. BMI category, trajectory, contributing factors → assessment dash.
+WEIGHT DIAGNOSIS NAMING: always use "Weight management" as heading for any weight-related diagnosis. Never "Obesity," "Overweight," "Severe obesity," or compound forms. BMI category, trajectory, contributing factors → assessment dash.
 
-WEIGHT FOLD-IN (sole exception to the problem-block rule): when weight is managed by counseling ALONE — no GLP-1/weight-loss med prescribed today AND none desired/requested by the patient — fold weight into the active wellness-type block as distinct dashes (BMI/assessment dash + guidance dash, after preventive dashes), not a standalone heading. DISQUALIFIER → standalone Weight management block: a GLP-1/weight-loss med prescribed today OR the patient wants one. No wellness-type heading active → always its own block.
+WEIGHT FOLD-IN (sole exception to problem-block rule): weight managed by counseling ALONE — no GLP-1/weight-loss med prescribed today AND none desired/requested — fold into active wellness-type block as distinct dashes (BMI/assessment dash + guidance dash, after preventive dashes), not a standalone heading. DISQUALIFIER → standalone block: GLP-1/weight-loss med prescribed today OR patient wants one. No wellness-type heading active → always its own block.
 
-ASSESSMENT vs. PLAN: Assessment dash = trajectory/duration, pivotal objective findings, specialist input, current status. NEVER restate the heading or a variant. Begin with trajectory ("Improved with...", "Stable on...", "Worsening despite..."). NEVER include PE findings unless driving today's decision. Target 2-4 sentences. Every block: ONE assessment dash, then ≥1 plan dashes. Any sentence with "Will," "Plan to...if," "Discussed," "Advised," "Recommended," a med verb, an order, or a restriction is a plan action — separate dash, one action each. EXCEPTION: parallel items in one action may combine; "Follow up:" lines exempt.
+ASSESSMENT vs. PLAN: Assessment dash = trajectory/duration, pivotal objective findings, specialist input, current status. NEVER restate the heading. Begin with trajectory ("Improved with...", "Stable on...", "Worsening despite..."). NEVER include PE findings unless driving today's decision. Target 2-4 sentences. Every block: ONE assessment dash, then ≥1 plan dashes. Any sentence with "Will," "Plan to...if," "Discussed," "Advised," "Recommended," a med verb, an order, or a restriction → separate plan dash, one action each. EXCEPTION: parallel items may combine; "Follow up:" lines exempt.
 
 GLP-1 RULE: if Wegovy/Zepbound/Saxenda discussed, add: "Advised on calorie restricted diet, aerobic exercise targeting 150 minutes weekly, and that if prescribed GLP-1 medications would NOT be combined with other prescribed weight loss medications."
 
 CONTENT REQUIREMENTS
 
-- BMI: state current BMI in the weight assessment dash. If diet/exercise discussed AND no detailed weight content: add "Advised on contributions of diet and exercise with plans for modification as indicated."
+- BMI: state current BMI in weight assessment dash. If diet/exercise discussed AND no detailed weight content: add "Advised on contributions of diet and exercise with plans for modification as indicated."
 - Vaccines: "Seasonal COVID-19 and influenza vaccines reviewed," then "and administered today," "and encouraged," or "and deferred."
 - Labs: "Reviewed recent labs." Lipids: "Monitor annually with repeat testing."
 - Cancer screening: date, finding, next step. Ranges: Cervical 21-65, Colon 45-75, Prostate 50-69, Lung 50-80 (>20 pack-yr). Below: "Not yet due." Above: "Shared decision making was used to review indications" + conclusion.
