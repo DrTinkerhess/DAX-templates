@@ -3,9 +3,9 @@ PAST TENSE: past-tense equivalents; orders/referrals "was placed/were ordered."
 
 CRITICAL FORMATTING
 ZERO blank lines between heading and first dash. No numbering. Diagnosis headings on own lines. One blank line between blocks. Every line starts with "- " EXCEPT "Follow up:". Never "Summary:"/"Plan:".
-COMBINED PROBLEMS (exception to OWN-block default): one comma-separated heading ONLY if provider links them causally (BPH -> LUTS/UTI) or SHARED-MANAGEMENT TEST: 2+ of one imaging/workup, medication, or specialist/interventional pathway. Shared organ/region alone never qualifies (except adjacent axial lumbar/sacral/pelvic/hip). Side effects never merge blocks; drug stays in its indication's block. NO CATCH-ALL: unrelated meds/procedures get own named block, even if brief. Single name for condition variants. Never duplicate plan items across blocks. NO STUB BLOCKS ("See above", status dx like "uses device"): absorb into related block.
+COMBINED PROBLEMS: one comma-separated heading ONLY if provider links them causally (BPH -> LUTS/UTI) or SHARED-MANAGEMENT TEST: 2+ of one imaging/workup, medication, or specialist/interventional pathway. Shared organ/region alone never qualifies (except adjacent axial lumbar/sacral/pelvic/hip). Side effects never merge blocks; drug stays in its indication's block. NO CATCH-ALL: unrelated meds/procedures get own named block, even if brief. Single name for condition variants. Never duplicate plan items across blocks. NO STUB BLOCKS ("See above", status dx like "uses device"): absorb into related block.
 STRUCTURE: wellness-type heading -> counseling line + preventive dashes; then each problem as its OWN heading + ONE assessment dash + plan dashes; blank line, then final "Follow up:".
-PLAN CONSOLIDATION (per problem): ALL patient advice/tasks (incl. med safety, self-monitoring, specialist follow-up, return precautions) -> ONE "Advised to [items]." dash; ALL OTC/supplements incl. fiber -> ONE "Recommended [products only]." dash, even if contingent ("Will" only if emphatic); ALL later provider acts/labs -> ONE "Will [actions]." dash (provider only; not today's acts, meds, or "Plan to...if" items). NEVER split; fixed-format dashes exempt. EXAMPLES: "- Advised to increase fluids, keep GI follow-up, and return if symptoms worsen." "- Will check A1c and TSH with next labs."
+PLAN CONSOLIDATION (per problem): ALL patient advice/tasks (incl. med safety, self-monitoring, specialist follow-up, return precautions) -> ONE "Advised to [items]." dash (patient acts only; no orders/referrals/MyChart); ALL OTC/supplements incl. fiber -> ONE "Recommended [products only]." dash, even if contingent ("Will" only if emphatic); ALL later provider acts/labs -> ONE "Will [actions]." dash (provider only; not today's acts, meds, or "Plan to...if" items). NEVER split; fixed-format dashes exempt. E.g. "- Advised to increase fluids, keep GI follow-up, and return if symptoms worsen." "- Will check A1c and TSH with next labs."
 Wellness-type headings absorb ONLY preventive content, NEVER problem diagnoses (except WEIGHT/STI FOLD-IN).
 
 VISIT-TYPE CLASSIFIER - HIGHEST PRIORITY
@@ -30,7 +30,7 @@ Heading "Well child visit". 1st dash (fixed): "- Well child visit completed as d
 TRIGGER: "well child/well visit/annual physical/well exam/checkup/routine pediatric HM" as visit type.
 
 WELLNESS VISIT:
-TRIGGER REQUIRED: "wellness visit/preventive visit/annual visit/annual exam/annual physical/yearly physical/physical exam" as visit type. HM topics in problem-focused visits go under relevant problem or HM. Trigger met AND follow-up 1+ year -> "Wellness visit"; never substitute "Health maintenance."
+TRIGGER REQUIRED: "wellness visit/preventive visit/annual visit/exam/physical, yearly physical, physical exam" as visit type. HM topics in problem-focused visits go under relevant problem or HM. Trigger met AND follow-up 1+ year -> "Wellness visit"; never substitute "Health maintenance."
 COUNSELING LINE (required 1st or 2nd dash): "Age-appropriate counseling including routine healthcare maintenance items and recommended screenings were reviewed."
 CONVERSION ACK (Tier 1B, 2nd dash): "Visit converted to wellness; problem-focused diagnoses documented in their own blocks below."
 
@@ -39,28 +39,29 @@ MEDICARE AWV (only if formally billed): Heading "Medicare Annual Wellness Visit"
 HEALTH MAINTENANCE (last): ONLY if preventive content reviewed. Future preventive work -> "Follow up: [interval] for [reason], with [pre-visit orders] drawn [timing] prior." Problem follow-up is NOT HM.
 
 MEDICATION RULES
-Verb set by therapy change: "Start" = first-time initiation only; refills/renewals/uncertain -> "Continue." Side effects reviewed -> end of that med/OTC dash (same line): none named -> "Reviewed potential adverse effects for which [she/he] should monitor."; symptom named -> "Reviewed potential [symptom] as adverse effect of [drug]." Never "Will monitor."
+Verb set by therapy change; one drug per dash, one dash per drug: "Start" = first-time initiation only; refills/renewals/uncertain -> "Continue"; dose change today -> "Increase/Decrease" even if refilled. Side effects reviewed -> end of that med/OTC dash (same line): none named -> "Reviewed potential adverse effects for which [she/he] should monitor."; symptom named -> "Reviewed potential [symptom] as adverse effect of [drug]." Never "Will monitor."
 - Same -> "Continue [Name] [Dose] [Freq]." (+ ", refilled" ONLY for CONTROLLED refills today)
 - New -> "Start [Name] [Dose] [Freq] [timing/PRN]."
 - Up/Down -> "Increase/Decrease [Name] to [Dose] [Freq]."
 - Stop -> "Discontinue [Name]." (+ "due to [reason]" if stated)
-"Continue" = meds only, one per dash. Never "Will continue," "prescribed/initiated/renewed/sent to pharmacy," refill counts, or qty/days supply.
+- Not started -> "Discussed [Name], not started due to [reason]."
+"Continue" = meds only. Never "Will continue," "prescribed/initiated/renewed/sent to pharmacy," refill counts, fill dates, or qty/days supply.
 
 FUTURE PLANS
 - Contingent: "Plan to [action] if [condition]," never "Will...if." Never "consider/may/could/might" in any dash (except OFFERED/DEFERRED): "Plan to consider X if" -> "Plan to start/order X if".
 - OFFERED/DEFERRED: HPV vaccination/STI screening not done -> VERBATIM "Routine STI screening and HPV vaccination discussed, not currently indicated." (drop either not discussed; never "Offered"). Other declined offers -> "Offered [service], deferred, may consider in the future if desired." Never "Plan to...if patient agrees."
 - SCHEDULED TESTS: ONE dash: "Scheduled [test] [date], will inform patient of results once available." Never split test/results or restate as patient dash.
-- Return visits -> "Follow up: [interval] for [conditions/labs due at that visit]." Never "Return in"/"Will follow up in..."; prefix ONCE; chain with semicolons, max 3 clauses. ONLY return visits; never restate contingencies/monitoring.
-- Past tense for anything done today ("Referred to [specialty] for [reason].", "Reviewed [resource]."). Exceptions: med rules, contingent plans.
+- Return visits only -> one "Follow up: [interval] for [conditions/labs due]." line; never "Return in"/"Will follow up in" or contingencies.
+- Past tense for anything done today ("Referred to [specialty] for [reason]."). Exceptions: med rules, contingent plans.
 
 CLINICAL CONTENT
 - Assessment dash: patient-specific history, findings, interpretation only (no truisms like "X is important for Y"). Advice, deferrals, options discussed, orders, or scheduling become plan dashes, stated once.
-- Tone: "advised/recommended/discussed," never "instructed/directed." Never "Advised" before orders/offers/provider actions. No filler ("continue routine preventive care," MyChart use).
+- Tone: "advised/recommended/discussed," never "instructed/directed." No filler ("continue routine preventive care").
 - Terminology: "Consistent with" for new diagnoses only; established name for known conditions.
 - "History reviewed, updated in EMR" or appended "included in AVS" (incl. check-out form) ONLY if provider says so.
 - Omit plan dash only if no action taken.
 
-WEIGHT DIAGNOSIS NAMING: heading "Weight management" for any weight diagnosis (never "Obesity/Overweight" or compounds). BMI, trajectory, contributors -> assessment dash.
+WEIGHT NAMING: heading "Weight management" for any weight diagnosis (never "Obesity/Overweight" or compounds). BMI, trajectory, contributors -> assessment dash.
 WEIGHT FOLD-IN: counseling-ONLY weight management -> ONE dash right after wellness counseling line: "BMI [value]; advised [guidance]."; weight-loss med prescribed/discussed today -> own block. STI FOLD-IN: routine asymptomatic STI screening -> no standalone heading; RELOCATE its dashes intact to end of wellness-type block, omitting none. Own block if symptoms, known exposure, positive result, treatment today, or no active wellness heading.
 GLP-1 RULE: Wegovy/Zepbound/Saxenda discussed -> own dash, VERBATIM: "Advised on calorie restricted diet, aerobic exercise targeting 150 minutes weekly, and that if prescribed GLP-1 medications would NOT be combined with other prescribed weight loss medications."
 
